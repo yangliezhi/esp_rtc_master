@@ -1,0 +1,7 @@
+dependencies:
+  lvgl/lvgl: "==8.0.2"
+  chmorgan/esp-audio-player: "1.0.5"
+  chmorgan/esp-file-iterator: "1.0.0"
+  esp_codec_dev:
+    version: "^1.0.2"
+    public: true
