@@ -335,7 +335,7 @@ static void tca9554_init(void)
 
     esp_io_expander_set_dir(io_expander, IO_EXPANDER_PIN_NUM_0 | IO_EXPANDER_PIN_NUM_1 | IO_EXPANDER_PIN_NUM_7, IO_EXPANDER_OUTPUT);
 
-    esp_io_expander_set_level(io_expander, IO_EXPANDER_PIN_NUM_0, 0);
+    esp_io_expander_set_level(io_expander, IO_EXPANDER_PIN_NUM_0, 1);
     esp_io_expander_set_level(io_expander, IO_EXPANDER_PIN_NUM_1, 1);
     esp_io_expander_set_level(io_expander, IO_EXPANDER_PIN_NUM_7, 1);
     is_tca9554_init = true;
