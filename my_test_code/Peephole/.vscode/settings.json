@@ -1,0 +1,18 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.adapterTargetName": "esp32s3",
+  "idf.openOcdConfigs": [
+    "interface/ftdi/esp32_devkitj_v1.cfg",
+    "target/esp32s3.cfg"
+  ],
+  "idf.portWin": "COM30",
+  "idf.flashType": "UART",
+  "files.associations": {
+    "logo_en_240x240_lcd.h": "c",
+    "gui_guider.h": "c",
+    "lvgl_camera.h": "c",
+    "audio_player.h": "c",
+    "bsp_board.h": "c",
+    "esp32_s3_korvo_2_v3_board.h": "c"
+  }
+}

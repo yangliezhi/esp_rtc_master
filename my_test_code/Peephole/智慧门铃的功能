@@ -1,0 +1,64 @@
+智慧猫眼的功能
+
+按键呼叫 屏幕显示
+人脸识别 
+移动检测
+语言识别
+命令识别
+视频录像保存 检测自动录像
+远程查看摄像头 查看录像
+
+数据流
+按键呼叫 数据流
+
+摄像头数据流的处理
+1 获取摄像头数据 数据传入xQueueAIFrame指针数据
+    register_camera(PIXFORMAT_RGB565, FRAMESIZE_QVGA, 2, xQueueAIFrame);
+2 把数据  xQueueAIFrame指针 处理后 获取的新数据指针输出到  xQueueLCDFrame
+    register_human_face_recognition(xQueueAIFrame, xQueueEventLogic, NULL, xQueueLCDFrame, false);
+3 把xQueueLCDFrame处理后的数据 赋值给屏幕上显示    
+    register_lcd(xQueueLCDFrame, NULL, true);
+
+控制数据流
+ 1 获取按键值buttons 然后发送给xQueueKeyState 
+    register_adc_button(buttons, 6, xQueueKeyState);
+        xQueueOverwrite(xQueueKeyStateO, &button_pressed);
+2 触摸屏的按键处理touch_button_task
+    xQueueOverwrite(xQueueKeyStateO, &select_switch);        
+3   根据接受的xQueueKeyState 值 进行逻辑控制代码
+    register_event(xQueueKeyState, xQueueEventLogic);
+
+人脸识别代码的数据流处理
+1 register_camera(PIXFORMAT_RGB565, FRAMESIZE_QVGA, 2, xQueueAIFrame);
+    获取数据 到xQueueAIFrame
+
+2 register_human_face_recognition(xQueueAIFrame, xQueueEventLogic, NULL, xQueueLCDFrame, false);
+    数据传入人脸识别函数 这个注册函数是一个循环的任务函数
+    这个函数里边 处理逻辑如下主要后三个 
+
+     监测到人脸后 可以保存人脸  保存人脸后 可以识别人脸  也可以删除保存的人脸
+
+3    register_lcd(xQueueLCDFrame, NULL, true);
+    处理后的额数据 通过xQueueLCDFrame指针 传入显示屏 在屏幕上显示效果
+
+
+录像保存到内存卡  远程查看 远程下载录像 功能介绍
+            if (select_switch == 5 && !switch1_triggered)
+            {
+                avi_recorder_start(video_file, _get_frame, _return_frame, resolution[EXAMPLE_SENSOR_FRAME_SIZE].width, resolution[EXAMPLE_SENSOR_FRAME_SIZE].height, 10 * 2, 1);
+                switch1_triggered = true; // 设置标志，避免重复调用第一个函数
+            }
+            else if (select_switch == 7 && !switch2_triggered)
+            {
+                start_stream_server(xQueueFrameI, true);
+                switch2_triggered = true; // 设置标志，避免重复调用第二个函数
+            }
+            else if (select_switch == 6 && !switch3_triggered)
+            {
+                start_file_server(SD_CARD_MOUNT_POINT);
+                switch3_triggered = true; // 设置标志，避免重复调用第三个函数
+            }
+语音唤醒和语音命令代码介绍
+    xTaskCreatePinnedToCore(&detect_Task, "detect", 8 * 1024, (void *)afe_data, 5, NULL, 1);
+    xTaskCreatePinnedToCore(&feed_Task, "feed", 8 * 1024, (void *)afe_data, 5, NULL, 0);
+    xTaskCreatePinnedToCore(&play_music, "play", 2 * 1024, NULL, 5, NULL, 1);
