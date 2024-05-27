@@ -1,0 +1,8 @@
+dependencies:
+  button:
+    public: true
+    version: '>=2.5'
+  espressif/esp32-camera: "^2.0.8"
+  espressif/esp_jpeg: "^1.0.5~2"
+  espressif/esp_io_expander_tca9554:
+    version: "^1.0.1"

@@ -1,0 +1,51 @@
+dependencies:
+  espressif/button:
+    component_hash: 1f5297fe16f0ee988dbb14b6f4c91782fe2baf85025bb15cc1e0093edd3fb2ee
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 3.2.0
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.5.3
+  espressif/esp32-camera:
+    component_hash: e00e75c24164b5d097bf98f325938558697916a0cb6b68872b9927587b46882a
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 2.0.8
+  espressif/esp_codec_dev:
+    component_hash: 1a3a2e518cd8b52e8796ec393a4050977f8f113599056faf085a02a57e194f86
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.1.0
+  espressif/esp_io_expander:
+    component_hash: fbc0de4082fc7c207dc98a93a0ed83d1a929a4ecee83cc567afb406f3ee6d4a6
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/esp_io_expander_tca9554:
+    component_hash: e9e49ddb1038c2b54b13c51b5e3e6dbdd10a878959c8ab0e0a7c8206316add61
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/esp_jpeg:
+    component_hash: 257714f4bd0d8258a122d57715e6ba166de858d6d49d5fb8e70263d5069d8568
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.5~2
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.2.1
+manifest_hash: 456cacfeaed578c2d39cc8f4472aee0e28dce25101cd64c53791ec39bb35c3a7
+target: esp32s3
+version: 1.0.0
