@@ -144,7 +144,7 @@ esp_rtc_handle_t rtc_service_start(av_stream_handle_t av_stream, const char *uri
     media_lib_add_default_adapter();
 
     esp_rtc_video_info_t vcodec_info = {
-        .vcodec = RTC_VCODEC_MJPEG,
+        .vcodec = AV_VCODEC_H264,
         .width = av_resolution[VIDEO_FRAME_SIZE].width,
         .height = av_resolution[VIDEO_FRAME_SIZE].height,
         .fps = VIDEO_FPS,

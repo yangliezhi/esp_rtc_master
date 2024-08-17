@@ -26,8 +26,8 @@
 
 #define WIFI_SSID   "robotcar"
 #define WIFI_PWD    "123456789"
-#define LOGIN_URL   CONFIG_SIP_URI
-
+// #define LOGIN_URL   CONFIG_SIP_URI
+#define LOGIN_URL "tcp://1010:voiptest_lexin@52.81.228.8:9670"
 static esp_rtc_handle_t esp_rtc;
 static av_stream_handle_t av_stream;
 
@@ -134,13 +134,13 @@ void app_main()
         .algo_mask = ALGORITHM_STREAM_DEFAULT_MASK,
         .acodec_samplerate = AUDIO_CODEC_SAMPLE_RATE,
         .acodec_type = AV_ACODEC_G711A,
-        .vcodec_type = AV_VCODEC_MJPEG,
+        .vcodec_type = AV_VCODEC_H264,
         .hal = {
             .set = set,
             .lcd_en = true,
             .uac_en = false,
             .uvc_en = false,
-            .video_soft_enc = false,
+            .video_soft_enc = true,
             .audio_samplerate = AUDIO_HAL_SAMPLE_RATE,
             .audio_framesize = PCM_FRAME_SIZE,
             .video_framesize = VIDEO_FRAME_SIZE,
